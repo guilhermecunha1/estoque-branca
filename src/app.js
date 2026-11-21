@@ -1,6 +1,6 @@
 import express from 'express'
 import errorHandler from './middlewares/errorHandler.js'
-import fabricRoutes from './src/routes/fabricRoutes.js'
+import fabricRoutes from './routes/fabricRoutes.js'
 
 
 const app = express()   

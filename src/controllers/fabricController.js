@@ -18,17 +18,16 @@ async function create(req, res, next) {
   }
 }
 
-async function findAll(req, res) {
+async function findAll(req, res, next) {
   try {
     const fabrics = await getAllFabrics();
     res.status(200).json(fabrics);
   } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Erro interno do servidor." });
+    next(err)
   }
 }
 
-async function getById(req, res) {
+async function getById(req, res, next) {
   const id = req.params.id;
   try {
     const fabric = await getFabricById(id);
@@ -38,11 +37,11 @@ async function getById(req, res) {
     }
     res.status(200).json(fabric);
   } catch (err) {
-    res.status(500).json({ message: "Erro interno do servidor." });
+    next(err)
   }
 }
 
-async function update(req, res) {
+async function update(req, res, next) {
   const id = req.params.id;
   const data = req.body;
   try {
@@ -53,12 +52,11 @@ async function update(req, res) {
     }
     res.status(200).json(fabric);
   } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Erro interno do servidor." });
+    next(err)
   }
 }
 
-async function exclude(req, res) {
+async function exclude(req, res, next) {
   const id = req.params.id;
   try {
     const fabric = await deleteFabric(id);
@@ -68,7 +66,7 @@ async function exclude(req, res) {
     }
     res.status(200).json(fabric);
   } catch (err) {
-    res.status(500).json({ message: "Erro interno do servidor." });
+    next(err)
   }
 }
 

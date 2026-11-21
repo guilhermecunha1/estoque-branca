@@ -1,4 +1,4 @@
-import app from "./app.js"
+import app from "./src/app.js"
 import 'dotenv/config'
 import connectDatabase from "./src/config/database.js"
 import dns from 'node:dns'
